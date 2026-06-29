@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Segoe UI", sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1e3a8a;
+}
+form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+   
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    max-width: 500px;
+    padding: 30px 20px;
+    background-color: #fff;;
+    color: #042c76;
+    border-radius: 20px;
+ 
+    animation: fadeZoomIn 0.8s ease-out;
+
+}
+form div {
+    margin: 10px 0;
+}
+.header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.header img{
+    width: 43px ;
+    height: 43px;
+}
+.header span{
+    color: #ffb703;
+    font-size: 25px;
+    font-weight: 600;
+
+}
+form div label{
+    font-size: 25px;
+    color: #042c76;
+}
+form div input{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #042c76;
+  outline: none;
+}
+form button{
+    background-color: #042c76;
+    padding: 10px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    transition: .3s;
+}
+button:hover{
+    background-color: #fff;
+    border: 1px solid #042c76;
+    color: #042c76;
+}
+@keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+    transform:  translate(-50%, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform:  translate(-50%, -50%);
+  }
+}
+
+
+
+

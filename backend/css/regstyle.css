@@ -1,0 +1,90 @@
+
+
+.rrr {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    margin-right: 70px;
+}
+
+
+.eee{ 
+margin-top: 100px;
+}
+
+.section-title{
+    color: #003366;
+
+}
+
+.card{
+    border: 3px solid #77777715; 
+    background:#F6F6F6;
+    border-radius: 10px;
+}
+
+
+.form-label{
+    color:#6C6C6C;
+}
+
+.navbar-brand{
+    color:#003366 ;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+}
+
+.form-control{
+  border-color: #0033667a;
+}
+
+
+.footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer .social-icon i,
+.footer i.fab {
+    color: orange;
+    font-size: 1.25rem;
+}
+
+.footer .socials-offset {
+    transform: translateX(-10px); /* تحريك الأيقونات شوية شمال */
+}
+.footer {
+    background-color: #003366;
+    color: white;
+    padding: 40px 0;
+}
+
+.footer a {
+    color: azure;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}  
+
+.navbar-nav {
+    margin-left: auto; 
+}
+
+
+.navbar-nav {
+    margin-left: 2rem; 
+}
+
+
+.navbar .mt-2.mt-lg-0 {
+    margin-left: 5rem;
+}

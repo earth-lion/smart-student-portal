@@ -1,0 +1,328 @@
+/* ============================================================
+   ABOUT PAGE STYLING
+   ============================================================ */
+
+.about-page-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Campus Hero Image Section ────────────────────────── */
+.about-hero-image-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(4, 44, 118, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: -20px;
+  margin-bottom: 40px;
+  background: #020e2e;
+}
+
+.about-hero-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  opacity: 0.95;
+  transition: transform 0.8s ease;
+}
+
+.about-hero-image-card:hover .about-hero-img {
+  transform: scale(1.03);
+}
+
+.about-hero-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, rgba(2, 14, 46, 0.95) 0%, rgba(2, 14, 46, 0.6) 60%, transparent 100%);
+  padding: 40px 30px;
+  color: #fff;
+  text-align: right;
+}
+
+.about-hero-overlay h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.about-hero-overlay p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* ── Departments Section ────────────────────────────── */
+.depts-section {
+  padding: 80px 0;
+  background: #fafbff;
+  border-top: 1px solid #e8eaf6;
+  border-bottom: 1px solid #e8eaf6;
+}
+
+.depts-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.depts-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--primary);
+  display: inline-block;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.depts-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 25%; right: 25%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  border-radius: 10px;
+}
+
+.depts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.dept-card {
+  background: #fff;
+  border: 1px solid #e8eaf6;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 25px rgba(4, 44, 118, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.dept-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 45px rgba(4, 44, 118, 0.1);
+  border-color: rgba(4, 44, 118, 0.15);
+}
+
+.dept-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 6px; height: 100%;
+  background: var(--primary);
+}
+
+.dept-card:hover::before {
+  background: var(--accent);
+}
+
+.dept-card__header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.dept-card__icon {
+  font-size: 32px;
+  background: rgba(4, 44, 118, 0.06);
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dept-card:hover .dept-card__icon {
+  background: var(--primary);
+  color: #fff;
+}
+
+.dept-card__title-wrap {
+  flex: 1;
+}
+
+.dept-card__title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.dept-card__accent-line {
+  width: 50px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+.dept-card__desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  text-align: justify;
+}
+
+.dept-card__btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font);
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.25s;
+}
+
+.dept-card__btn:hover {
+  background: #020e2e;
+  transform: translateY(-1px);
+}
+
+/* ── Modal Overlay ──────────────────────────────────── */
+.dept-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 14, 46, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.dept-modal {
+  background: #fff;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dept-modal__header {
+  background: linear-gradient(135deg, #020e2e 0%, #042C76 100%);
+  padding: 24px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.dept-modal__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dept-modal__icon {
+  font-size: 28px;
+}
+
+.dept-modal__title {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.dept-modal__close {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dept-modal__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.dept-modal__body {
+  padding: 30px;
+  direction: rtl;
+}
+
+.dept-modal__desc {
+  font-size: 15px;
+  color: #334155;
+  line-height: 1.8;
+  margin-bottom: 24px;
+  text-align: justify;
+}
+
+.dept-modal__badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dept-modal__badge {
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  border: 1px solid #e2e8f0;
+}
+
+.dept-modal__footer {
+  padding: 15px 30px 25px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .about-hero-img {
+    height: 280px;
+  }
+  .about-hero-overlay h3 {
+    font-size: 18px;
+  }
+  .about-hero-overlay p {
+    font-size: 13px;
+  }
+  .depts-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .dept-modal__badge-grid {
+    grid-template-columns: 1fr;
+  }
+}
