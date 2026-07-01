@@ -78,7 +78,7 @@ const features = [
 
 const events = [
   {
-    img: "/ev1.png",
+    img: `${import.meta.env.BASE_URL}ev1.png`,
     date: "25",
     month: "Aug",
     year: "2025",
@@ -89,7 +89,7 @@ const events = [
     tag: "احتفالي",
   },
   {
-    img: "/ev2.png",
+    img: `${import.meta.env.BASE_URL}ev2.png`,
     date: "26",
     month: "Sep",
     year: "2025",
@@ -100,7 +100,7 @@ const events = [
     tag: "تعريفي",
   },
   {
-    img: "/ev3.png",
+    img: `${import.meta.env.BASE_URL}ev3.png`,
     date: "3",
     month: "Oct",
     year: "2025",
@@ -111,7 +111,7 @@ const events = [
     tag: "تقني",
   },
   {
-    img: "/ev4.png",
+    img: `${import.meta.env.BASE_URL}ev4.png`,
     date: "11",
     month: "Nov",
     year: "2025",
@@ -122,7 +122,7 @@ const events = [
     tag: "مهني",
   },
   {
-    img: "/ev5.png",
+    img: `${import.meta.env.BASE_URL}ev5.png`,
     date: "15",
     month: "Dec",
     year: "2025",
@@ -133,7 +133,7 @@ const events = [
     tag: "أكاديمي",
   },
   {
-    img: "/ev6.png",
+    img: `${import.meta.env.BASE_URL}ev6.png`,
     date: "20",
     month: "Jan",
     year: "2026",
@@ -144,7 +144,7 @@ const events = [
     tag: "رياضي",
   },
   {
-    img: "/ev1.png",
+    img: `${import.meta.env.BASE_URL}ev1.png`,
     date: "5",
     month: "Feb",
     year: "2026",
@@ -155,7 +155,7 @@ const events = [
     tag: "ثقافي",
   },
   {
-    img: "/ev2.png",
+    img: `${import.meta.env.BASE_URL}ev2.png`,
     date: "10",
     month: "Mar",
     year: "2026",
@@ -166,7 +166,7 @@ const events = [
     tag: "إرشادي",
   },
   {
-    img: "/ev3.png",
+    img: `${import.meta.env.BASE_URL}ev3.png`,
     date: "22",
     month: "Mar",
     year: "2026",
@@ -177,7 +177,7 @@ const events = [
     tag: "تقني",
   },
   {
-    img: "/ev4.png",
+    img: `${import.meta.env.BASE_URL}ev4.png`,
     date: "5",
     month: "Apr",
     year: "2026",
@@ -188,7 +188,7 @@ const events = [
     tag: "بحثي",
   },
   {
-    img: "/ev5.png",
+    img: `${import.meta.env.BASE_URL}ev5.png`,
     date: "18",
     month: "Apr",
     year: "2026",
@@ -199,7 +199,7 @@ const events = [
     tag: "تطويري",
   },
   {
-    img: "/ev6.png",
+    img: `${import.meta.env.BASE_URL}ev6.png`,
     date: "1",
     month: "May",
     year: "2026",
