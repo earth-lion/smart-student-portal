@@ -1,0 +1,44 @@
+# ──────────────────────────────────────────
+# Smart Student Portal — .gitignore
+# ──────────────────────────────────────────
+
+# ── Laravel Backend ──
+/backend/vendor/
+/backend/.env
+/backend/storage/logs/*.log
+/backend/storage/framework/cache/
+/backend/storage/framework/sessions/
+/backend/storage/framework/views/
+/backend/bootstrap/cache/
+/backend/node_modules/
+
+# ── React Frontend ──
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.env
+/frontend/.env.local
+/frontend/.env.*.local
+
+# ── OS Files ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ──
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ── PHP ──
+*.phpunit.result.cache
+.phpunit.cache/
+
+# ── Logs ──
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
