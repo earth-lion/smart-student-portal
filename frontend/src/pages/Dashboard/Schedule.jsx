@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react';
+import { useAuth } from '../../context/AuthContext';
 import api from '../../services/api';
 import { Calendar, Clock, MapPin, User, Search, RefreshCw } from 'lucide-react';
 import toast from 'react-hot-toast';
 import './Dashboard.css';
 
 export default function Schedule() {
+  const { user } = useAuth();
+
+  const getInitialDeptId = () => {
+    if (!user?.department) return '1';
+    if (user.department.includes('هندسة البرمجيات')) return '2';
+    if (user.department.includes('نظم المعلومات')) return '3';
+    return '1'; // Default to CS
+  };
+
   const [filters, setFilters] = useState({
-    year_id: '1',
+    year_id: user?.academic_year ? String(user.academic_year) : '1',
     semester_id: '1',
-    department_id: '1',
+    department_id: getInitialDeptId(),
     type: 'lecture',
   });
   const [schedules, setSchedules] = useState([]);
@@ -42,15 +52,28 @@ export default function Schedule() {
     }
   };
 
+  // Update filters when user context loads
+  useEffect(() => {
+    if (user) {
+      const deptId = getInitialDeptId();
+      setFilters({
+        year_id: user.academic_year ? String(user.academic_year) : '1',
+        semester_id: '1',
+        department_id: deptId,
+        type: 'lecture',
+      });
+    }
+  }, [user]);
+
+  // Fetch schedule when filters change
   useEffect(() => {
     fetchSchedule();
-  }, []);
+  }, [filters.year_id, filters.semester_id, filters.department_id, filters.type]);
 
   const departments = [
-    { id: '1', name: 'عام' },
-    { id: '2', name: 'هندسة البرمجيات' },
-    { id: '3', name: 'علوم الحاسب' },
-    { id: '4', name: 'نظم المعلومات' },
+    { id: '1', name: 'علوم الحاسب (CS)' },
+    { id: '2', name: 'هندسة البرمجيات (SE)' },
+    { id: '3', name: 'نظم المعلومات (IS)' },
   ];
 
   const years = [

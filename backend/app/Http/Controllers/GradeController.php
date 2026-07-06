@@ -20,30 +20,34 @@ class GradeController extends Controller
             ], 403);
         }
 
-        // التحقق من أن الترم والسنة موجودين في الطلب
-        $request->validate([
-            'academic_year' => 'required',
-            'semester' => 'required',
-        ]);
-
-        $grades = Grade::with('course')
+        // بناء الاستعلام الأساسي
+        $query = Grade::with('course')
             ->where('student_id', $student->student_id)
-            ->where('academic_year', $request->academic_year)
-            ->where('semester', $request->semester)
-            ->whereIn('course_id', function ($query) use ($student) {
-                $query->select('course_id')
+            ->whereIn('course_id', function ($q) use ($student) {
+                $q->select('course_id')
                     ->from('registrations')
                     ->where('student_id', $student->student_id);
-            })
-            ->get();
+            });
+
+        // فلترة اختيارية بالسنة والفصل إذا تم إرسالهما
+        if ($request->filled('academic_year')) {
+            $query->where('academic_year', $request->academic_year);
+        }
+        if ($request->filled('semester')) {
+            $query->where('semester', $request->semester);
+        }
+
+        $grades = $query->get();
 
         $gradesWithDetails = $grades->map(function ($grade) {
             return [
-                'name' => $grade->course->name ?? 'غير معروف',
-                'grade' => $grade->grade,
-                'evaluation' => $this->getGradeLetter($grade->grade),
-                'semester' => $grade->semester,
+                'name'          => $grade->course->name ?? 'غير معروف',
+                'course_name'   => $grade->course->name ?? 'غير معروف',
+                'grade'         => $grade->grade,
+                'evaluation'    => $this->getGradeLetter($grade->grade),
+                'semester'      => $grade->semester,
                 'academic_year' => $grade->academic_year,
+                'credit_hours'  => $grade->course->total_credits ?? 3,
             ];
         });
 
@@ -51,9 +55,10 @@ class GradeController extends Controller
 
         return response()->json([
             'grades' => $gradesWithDetails,
-            'gpa' => $gpa
+            'gpa'    => $gpa
         ]);
     }
+
 
 // دالة لحساب الـ GPA بناءً على الدرجات
 private function calculateGPA($grades)
@@ -63,7 +68,7 @@ private function calculateGPA($grades)
 
     foreach ($grades as $grade) {
         $gradeValue = $grade->grade;
-        $hours = $grade->course->credit_hours ?? 3;
+        $hours = $grade->course->total_credits ?? 3;
 
         if ($gradeValue >= 90) {
             $points = 4.0;

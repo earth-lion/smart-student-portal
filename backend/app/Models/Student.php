@@ -66,9 +66,9 @@ public function comments()
 {
     return $this->hasMany(Comment::class);
 }
-public function financialData()
+    public function financialData()
     {
-        return $this->hasOne(FinancialData::class, 'student_id','id');
+        return $this->hasOne(FinancialData::class, 'student_id', 'student_id');
     }
      public function resources()
     {

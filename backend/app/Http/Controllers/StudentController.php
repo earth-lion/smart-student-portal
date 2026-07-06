@@ -22,19 +22,17 @@ class StudentController extends Controller
 
         $student = Student::findOrFail($id);
 
-        // جلب الرسوم الثابتة بناءً على الفرقة والقسم والفصل
-        $financialData = FinancialData::where('academic_year', $student->academic_year)
-            ->where('semester', $student->semester)
-            ->where('department', $student->department)
-            ->first();
+        // جلب البيانات المالية الخاصة بالطالب
+        $financialData = FinancialData::where('student_id', $student->student_id)->first();
 
-        $fixed_fee = $financialData?->fixed_fee ?? 0;
+        $fixed_fee = $financialData?->total_amount ?? 0;
 
         $courses_fee = Registration::join('courses', 'registrations.course_id', '=', 'courses.course_id')
             ->where('registrations.student_id', $student->student_id)
             ->sum('courses.price');
 
-        $total_due = $fixed_fee + $courses_fee;
+        // الإجمالي المستحق هو المبلغ المتبقي للطالب
+        $total_due = $financialData?->remaining_amount ?? 0;
 
         return response()->json([
             'id' => $student->student_id,
@@ -53,11 +51,12 @@ class StudentController extends Controller
             'seat_number' => $student->seat_number,
             'financial_status' => $student->financial_status,
             'image_url' => $student->image ? asset('storage/' . $student->image) : asset('images/default.png'),
-            // البيانات المالية مفصولة:
             'financial_data' => [
                 'fixed_fee' => $fixed_fee,
                 'courses_fee' => $courses_fee,
-                'total_due' => $total_due,
+                'total_amount' => $fixed_fee + $courses_fee,
+                'paid_amount' => $financialData?->paid_amount ?? 0,
+                'total_due' => $total_due + $courses_fee, // If courses fee is added to total due
                 'financial_status' => $student->financial_status, // البيانات المالية
             ],
         ]);

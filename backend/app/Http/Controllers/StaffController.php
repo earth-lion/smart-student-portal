@@ -63,7 +63,7 @@ class StaffController extends Controller
         }
 
         // Get registrations for these courses with student details
-        $registrations = Registration::whereIn('course_id', $courseIds)
+        $registrations = Registration::whereIn('registrations.course_id', $courseIds)
             ->join('students', 'registrations.student_id', '=', 'students.student_id')
             ->join('courses', 'registrations.course_id', '=', 'courses.course_id')
             ->select(

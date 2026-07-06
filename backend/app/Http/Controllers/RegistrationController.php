@@ -24,6 +24,7 @@ class RegistrationController extends Controller
             'total_credits' => $course->total_credits,
             'type' => $course->type,
             'instructor_name' => $course->instructor_name,
+            'price' => $course->price,
         ];
     });
 

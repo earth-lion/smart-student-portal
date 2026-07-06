@@ -11,14 +11,11 @@ class FinancialData extends Model
 
     protected $table = 'financial_data';
 
-    // تحديد الأعمدة القابلة للتحديث
     protected $fillable = [
         'student_id',
-        'amount_due',
-        'payment_status',
-        'academic_year',
-        'semester',
-        'total_credits',
+        'total_amount',
+        'paid_amount',
+        'remaining_amount',
     ];
 
     /**
@@ -26,6 +23,6 @@ class FinancialData extends Model
      */
     public function student()
     {
-        return $this->belongsTo(Student::class, 'student_id','id');
+        return $this->belongsTo(Student::class, 'student_id','student_id');
     }
 }

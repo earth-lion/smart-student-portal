@@ -96,6 +96,7 @@ Route::get('/resources/{resource_id}/files', [ResourceController::class, 'getFil
 
 //payment
 Route::post('/fawry/callback', [PaymentController::class, 'fawryCallback']);
+Route::post('/student/pay', [PaymentController::class, 'payFees'])->middleware('auth:sanctum');
 
 // ── Admin-Only Middleware & Route Group ──
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
